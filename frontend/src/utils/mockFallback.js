@@ -165,3 +165,4 @@ export const fallbackProducts = [
     status: 'Available'
   }
 ];
+
