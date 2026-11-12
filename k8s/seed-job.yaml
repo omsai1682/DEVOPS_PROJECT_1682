@@ -1,0 +1,20 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: database-seed-job
+spec:
+  ttlSecondsAfterFinished: 300
+  template:
+    spec:
+      containers:
+        - name: seeder
+          image: electro-backend:latest
+          imagePullPolicy: IfNotPresent
+          command: ["node", "src/seed.js"]
+          envFrom:
+            - configMapRef:
+                name: backend-config
+            - secretRef:
+                name: backend-secret
+      restartPolicy: OnFailure
+  backoffLimit: 5
