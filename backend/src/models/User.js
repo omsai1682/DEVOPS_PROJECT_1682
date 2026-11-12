@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
+const { getPostgresUrl } = require('../config/postgres');
+const { PgUser } = require('./pgAdapter');
 
 const userSchema = new mongoose.Schema(
   {
@@ -48,7 +50,6 @@ const userSchema = new mongoose.Schema(
   }
 );
 
-// Hash password before saving
 userSchema.pre('save', async function (next) {
   if (!this.isModified('password')) return next();
   try {
@@ -60,16 +61,33 @@ userSchema.pre('save', async function (next) {
   }
 });
 
-// Compare password method
 userSchema.methods.comparePassword = async function (candidatePassword) {
   return bcrypt.compare(candidatePassword, this.password);
 };
 
-// Remove password when serialized
 userSchema.methods.toJSON = function () {
   const obj = this.toObject();
   delete obj.password;
   return obj;
 };
 
-module.exports = mongoose.model('User', userSchema);
+const MongooseUser = mongoose.models.User || mongoose.model('User', userSchema);
+
+// Dynamic dual-driver export (Neon PostgreSQL or MongoDB)
+module.exports = new Proxy(MongooseUser, {
+  get(target, prop) {
+    if (getPostgresUrl() && prop in PgUser) {
+      return PgUser[prop];
+    }
+    return target[prop];
+  },
+  apply(target, thisArg, argumentsList) {
+    return Reflect.apply(target, thisArg, argumentsList);
+  },
+  construct(target, argumentsList) {
+    if (getPostgresUrl()) {
+      return new PgUser(...argumentsList);
+    }
+    return new target(...argumentsList);
+  }
+});

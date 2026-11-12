@@ -1,30 +1,38 @@
 const mongoose = require('mongoose');
 const logger = require('../utils/logger');
-
-let isConnected = false;
+const { getPostgresUrl, initPostgres, isPostgresUrl } = require('./postgres');
 
 const connectDB = async () => {
+  const pgUrl = getPostgresUrl();
+
+  // 1. If Neon PostgreSQL connection string is provided, use Postgres
+  if (pgUrl && isPostgresUrl(pgUrl)) {
+    logger.info('Detected PostgreSQL connection string. Initializing Neon database...');
+    const pool = await initPostgres();
+    if (pool) {
+      return pool;
+    }
+  }
+
+  // 2. Otherwise use MongoDB
   const mongoUri =
     process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/electronic_rental';
 
   try {
     const conn = await mongoose.connect(mongoUri, {
       autoIndex: true,
-      serverSelectionTimeoutMS: 5000 // Quick timeout to prevent blocking startup
+      serverSelectionTimeoutMS: 5000
     });
 
-    isConnected = true;
     logger.info(`MongoDB Connected: ${conn.connection.host}/${conn.connection.name}`);
     return conn;
   } catch (error) {
-    isConnected = false;
-    logger.error('Initial MongoDB connection error:', error.message);
-    logger.warn('Server will continue running. Please set a valid MONGO_URI (e.g. MongoDB Atlas) in your environment variables.');
+    logger.error('Initial database connection error:', error.message);
+    logger.warn('Server will continue running. Set DATABASE_URL (for Neon) or MONGO_URI in your environment variables.');
 
-    // Attempt periodic background reconnection if in production
     if (process.env.NODE_ENV !== 'test') {
       setTimeout(() => {
-        logger.info('Retrying MongoDB connection in background...');
+        logger.info('Retrying database connection in background...');
         connectDB();
       }, 10000);
     }

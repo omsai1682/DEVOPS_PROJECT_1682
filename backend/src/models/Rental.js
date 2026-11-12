@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+const { getPostgresUrl } = require('../config/postgres');
+const { PgRental } = require('./pgAdapter');
 
 const rentalSchema = new mongoose.Schema(
   {
@@ -118,4 +120,23 @@ const rentalSchema = new mongoose.Schema(
   }
 );
 
-module.exports = mongoose.model('Rental', rentalSchema);
+const MongooseRental = mongoose.models.Rental || mongoose.model('Rental', rentalSchema);
+
+// Dynamic dual-driver export (Neon PostgreSQL or MongoDB)
+module.exports = new Proxy(MongooseRental, {
+  get(target, prop) {
+    if (getPostgresUrl() && prop in PgRental) {
+      return PgRental[prop];
+    }
+    return target[prop];
+  },
+  apply(target, thisArg, argumentsList) {
+    return Reflect.apply(target, thisArg, argumentsList);
+  },
+  construct(target, argumentsList) {
+    if (getPostgresUrl()) {
+      return new PgRental(...argumentsList);
+    }
+    return new target(...argumentsList);
+  }
+});

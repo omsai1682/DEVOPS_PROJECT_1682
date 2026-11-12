@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+const { getPostgresUrl } = require('../config/postgres');
+const { PgProduct } = require('./pgAdapter');
 
 const productSchema = new mongoose.Schema(
   {
@@ -83,7 +85,6 @@ const productSchema = new mongoose.Schema(
   }
 );
 
-// Virtual for rented count
 productSchema.virtual('rentedStock').get(function () {
   return Math.max(0, this.stock - this.availableStock);
 });
@@ -91,4 +92,23 @@ productSchema.virtual('rentedStock').get(function () {
 productSchema.set('toJSON', { virtuals: true });
 productSchema.set('toObject', { virtuals: true });
 
-module.exports = mongoose.model('Product', productSchema);
+const MongooseProduct = mongoose.models.Product || mongoose.model('Product', productSchema);
+
+// Dynamic dual-driver export (Neon PostgreSQL or MongoDB)
+module.exports = new Proxy(MongooseProduct, {
+  get(target, prop) {
+    if (getPostgresUrl() && prop in PgProduct) {
+      return PgProduct[prop];
+    }
+    return target[prop];
+  },
+  apply(target, thisArg, argumentsList) {
+    return Reflect.apply(target, thisArg, argumentsList);
+  },
+  construct(target, argumentsList) {
+    if (getPostgresUrl()) {
+      return new PgProduct(...argumentsList);
+    }
+    return new target(...argumentsList);
+  }
+});
