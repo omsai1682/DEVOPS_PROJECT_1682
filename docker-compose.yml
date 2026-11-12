@@ -1,0 +1,91 @@
+version: '3.8'
+
+services:
+  # ==========================================
+  # MongoDB Database Service
+  # ==========================================
+  mongodb:
+    image: mongo:7.0-jammy
+    container_name: electro-mongodb
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_DATABASE: electronic_rental
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - electro-network
+    # Port 27017 is kept internal by default for security in production;
+    # mapped for local debugging if required
+    ports:
+      - "27017:27017"
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 15s
+
+  # ==========================================
+  # Backend Express REST API Service
+  # ==========================================
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: electro-backend
+    restart: unless-stopped
+    ports:
+      - "5000:5000"
+    environment:
+      - PORT=5000
+      - NODE_ENV=production
+      - MONGO_URI=mongodb://mongodb:27017/electronic_rental
+      - JWT_SECRET=super_secret_jwt_key_electronic_rental_change_in_production
+      - JWT_EXPIRES_IN=7d
+      - CLIENT_URL=http://localhost
+      - LATE_FEE_MULTIPLIER=1.5
+      - OVERDUE_CHECK_INTERVAL_MS=3600000
+    depends_on:
+      mongodb:
+        condition: service_healthy
+    networks:
+      - electro-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/api/health"]
+      interval: 20s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
+
+  # ==========================================
+  # Frontend React SPA + Nginx Service
+  # ==========================================
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        - VITE_API_URL=/api
+    container_name: electro-frontend
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    depends_on:
+      backend:
+        condition: service_healthy
+    networks:
+      - electro-network
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+networks:
+  electro-network:
+    driver: bridge
+
+volumes:
+  mongo-data:
+    driver: local

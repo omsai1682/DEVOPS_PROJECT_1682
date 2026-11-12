@@ -1,0 +1,200 @@
+const defaultUsers = [
+  {
+    name: 'System Administrator',
+    email: 'admin@example.com',
+    password: 'Password@123',
+    phone: '+1-555-0100',
+    address: '742 Evergreen Terrace, Tech Park, CA',
+    role: 'admin',
+    isActive: true
+  },
+  {
+    name: 'Inventory Supervisor',
+    email: 'inventory@example.com',
+    password: 'Password@123',
+    phone: '+1-555-0101',
+    address: 'Warehouse Hub 4, Logistics Ave, CA',
+    role: 'inventory_manager',
+    isActive: true
+  },
+  {
+    name: 'Alex Johnson',
+    email: 'customer@example.com',
+    password: 'Password@123',
+    phone: '+1-555-0102',
+    address: '120 Market Street, Apt 4B, San Francisco, CA',
+    role: 'customer',
+    isActive: true
+  },
+  {
+    name: 'Sarah Connor',
+    email: 'sarah@example.com',
+    password: 'Password@123',
+    phone: '+1-555-0103',
+    address: '88 Cyberdyne Way, Los Angeles, CA',
+    role: 'customer',
+    isActive: true
+  }
+];
+
+const defaultProducts = [
+  {
+    name: 'Dell XPS 15 9530',
+    category: 'Laptops',
+    brand: 'Dell',
+    model: 'XPS 15 Core i7 13th Gen, 32GB RAM, 1TB SSD, RTX 4060',
+    description: 'High-performance workstation laptop ideal for creators, software developers, and video editing suites.',
+    condition: 'Excellent',
+    pricePerDay: 45,
+    securityDeposit: 300,
+    stock: 5,
+    availableStock: 4,
+    image: 'https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=800',
+    status: 'Available'
+  },
+  {
+    name: 'HP Spectre x360 2-in-1',
+    category: 'Laptops',
+    brand: 'HP',
+    model: 'Spectre 14-inch OLED Touch, Intel Core Ultra 7, 16GB RAM',
+    description: 'Convertible premium ultrabook with vibrant OLED display and stylus pen for digital presentations.',
+    condition: 'New',
+    pricePerDay: 40,
+    securityDeposit: 250,
+    stock: 4,
+    availableStock: 3,
+    image: 'https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=800',
+    status: 'Available'
+  },
+  {
+    name: 'Canon EOS R6 Mark II Mirrorless',
+    category: 'Cameras',
+    brand: 'Canon',
+    model: 'EOS R6 Mk II Body + RF 24-105mm F4 L IS USM Lens',
+    description: 'Professional full-frame hybrid camera with 4K 60p video, 40 fps continuous shooting, and dual card slots.',
+    condition: 'Excellent',
+    pricePerDay: 65,
+    securityDeposit: 400,
+    stock: 3,
+    availableStock: 2,
+    image: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=800',
+    status: 'Available'
+  },
+  {
+    name: 'Sony Alpha A7 IV Full-Frame Camera',
+    category: 'Cameras',
+    brand: 'Sony',
+    model: 'ILCE-7M4 with FE 28-70mm Zoom Lens',
+    description: 'Industry benchmark hybrid mirrorless camera with 33MP Exmor R sensor and real-time eye autofocus.',
+    condition: 'Excellent',
+    pricePerDay: 60,
+    securityDeposit: 400,
+    stock: 4,
+    availableStock: 3,
+    image: 'https://images.unsplash.com/photo-1502920917128-1aa500764cbd?w=800',
+    status: 'Available'
+  },
+  {
+    name: 'Epson Pro EX9240 Full HD Projector',
+    category: 'Projectors',
+    brand: 'Epson',
+    model: 'Pro EX9240 Wireless 1080p 4000 Lumens 3LCD',
+    description: 'High-brightness business and theater projector featuring crisp 1080p resolution and screen mirroring.',
+    condition: 'Good',
+    pricePerDay: 35,
+    securityDeposit: 200,
+    stock: 4,
+    availableStock: 3,
+    image: 'https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?w=800',
+    status: 'Available'
+  },
+  {
+    name: 'Sony SRS-RA5000 Premium Wireless Speaker',
+    category: 'Speakers',
+    brand: 'Sony',
+    model: 'SRS-RA5000 360 Reality Audio Wi-Fi/Bluetooth Speaker',
+    description: 'Immersive spatial room-filling sound with ambient sound enhancement, Wi-Fi multi-room, and Chromecast.',
+    condition: 'Excellent',
+    pricePerDay: 25,
+    securityDeposit: 150,
+    stock: 6,
+    availableStock: 5,
+    image: 'https://images.unsplash.com/photo-1545454675-3531b543be5d?w=800',
+    status: 'Available'
+  },
+  {
+    name: 'Samsung 65" QLED 4K Smart TV',
+    category: 'TVs',
+    brand: 'Samsung',
+    model: 'QN65Q80C Quantum HDR 12x 120Hz Gaming TV',
+    description: 'Ultra-thin bezel 4K smart TV equipped with Motion Xcelerator Turbo+ and Dolby Atmos audio.',
+    condition: 'New',
+    pricePerDay: 75,
+    securityDeposit: 500,
+    stock: 2,
+    availableStock: 1,
+    image: 'https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?w=800',
+    status: 'Available'
+  },
+  {
+    name: 'Sony PlayStation 5 Disc Edition Console',
+    category: 'Gaming Consoles',
+    brand: 'Sony',
+    model: 'PS5 Disc Console + 2 DualSense Wireless Controllers',
+    description: 'Next-gen gaming power with lightning-fast SSD load times, haptic feedback, and 4K 120Hz support.',
+    condition: 'Excellent',
+    pricePerDay: 30,
+    securityDeposit: 250,
+    stock: 5,
+    availableStock: 3,
+    image: 'https://images.unsplash.com/photo-1606813907291-d86efa9b94db?w=800',
+    status: 'Available'
+  },
+  {
+    name: 'Apple iPad Pro 12.9" M2 Chip',
+    category: 'Tablets',
+    brand: 'Apple',
+    model: 'iPad Pro 12.9 6th Gen 256GB Wi-Fi + Apple Pencil 2',
+    description: 'Liquid Retina XDR display with ProMotion technology, M2 silicon chip, and Apple Pencil hover support.',
+    condition: 'Excellent',
+    pricePerDay: 35,
+    securityDeposit: 300,
+    stock: 4,
+    availableStock: 3,
+    image: 'https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=800',
+    status: 'Available'
+  },
+  {
+    name: 'Apple AirPods Max Wireless Headphones',
+    category: 'Headphones',
+    brand: 'Apple',
+    model: 'AirPods Max Space Gray with Smart Case',
+    description: 'High-fidelity audio with Active Noise Cancellation, Transparency mode, and personalized spatial audio.',
+    condition: 'Excellent',
+    pricePerDay: 20,
+    securityDeposit: 150,
+    stock: 8,
+    availableStock: 6,
+    image: 'https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=800',
+    status: 'Available'
+  },
+  {
+    name: 'Apple Watch Ultra 2 GPS + Cellular',
+    category: 'Smart Watches',
+    brand: 'Apple',
+    model: 'Titanium Case 49mm with Trail Loop Band',
+    description: 'Rugged smartwatch built for endurance athletes, outdoor adventurers, and water sports enthusiasts.',
+    condition: 'New',
+    pricePerDay: 22,
+    securityDeposit: 180,
+    stock: 4,
+    availableStock: 3,
+    image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800',
+    status: 'Available'
+  }
+];
+
+module.exports = {
+  defaultUsers,
+  defaultProducts
+};
