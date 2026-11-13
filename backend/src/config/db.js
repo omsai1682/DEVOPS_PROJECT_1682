@@ -18,10 +18,13 @@ const connectDB = async () => {
   const mongoUri =
     process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/electronic_rental';
 
+  // Disable command buffering so queries fail immediately to in-memory fallback if DB is offline
+  mongoose.set('bufferCommands', false);
+
   try {
     const conn = await mongoose.connect(mongoUri, {
       autoIndex: true,
-      serverSelectionTimeoutMS: 5000
+      serverSelectionTimeoutMS: 3000
     });
 
     logger.info(`MongoDB Connected: ${conn.connection.host}/${conn.connection.name}`);

@@ -15,26 +15,24 @@ const healthRoutes = require('./routes/healthRoutes');
 
 const app = express();
 
-// Security HTTP headers
-app.use(helmet());
-
-// CORS Configuration
-const allowedOrigin = process.env.CLIENT_URL || 'http://localhost:5173';
+// Security HTTP headers configured for cross-origin API access from Vercel/Netlify
 app.use(
-  cors({
-    origin: (origin, callback) => {
-      // Allow requests with no origin (e.g. mobile apps, curl, postman) or matching origin
-      if (!origin || origin === allowedOrigin || origin.startsWith('http://localhost')) {
-        callback(null, true);
-      } else {
-        callback(null, true); // Permissive in dev/docker environments
-      }
-    },
-    credentials: true,
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization']
+  helmet({
+    crossOriginResourcePolicy: { policy: 'cross-origin' },
+    contentSecurityPolicy: false
   })
 );
+
+// CORS Configuration - Permissive for Vercel, Netlify, and Localhost
+app.use(
+  cors({
+    origin: true,
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With']
+  })
+);
+app.options('*', cors());
 
 // Rate Limiting (100 requests per 15 minutes per IP)
 const limiter = rateLimit({

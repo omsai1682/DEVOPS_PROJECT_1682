@@ -1,14 +1,29 @@
 import axios from 'axios';
 
-// Default API URL from environment variables or fallback to relative/localhost
-const baseURL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+// Default API URL from environment variables or fallback to live Render backend
+const getBaseUrl = () => {
+  if (import.meta.env.VITE_API_URL) {
+    return import.meta.env.VITE_API_URL;
+  }
+  // When running on cloud hosting (Vercel, Netlify)
+  if (
+    typeof window !== 'undefined' &&
+    window.location.hostname !== 'localhost' &&
+    window.location.hostname !== '127.0.0.1'
+  ) {
+    return 'https://devops-project-1682.onrender.com/api';
+  }
+  return 'http://localhost:5000/api';
+};
+
+const baseURL = getBaseUrl();
 
 const api = axios.create({
   baseURL,
   headers: {
     'Content-Type': 'application/json'
   },
-  timeout: 15000
+  timeout: 45000
 });
 
 // Interceptor to attach JWT token to requests

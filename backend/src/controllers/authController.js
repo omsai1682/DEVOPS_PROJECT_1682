@@ -102,6 +102,24 @@ const login = async (req, res, next) => {
       token
     });
   } catch (error) {
+    // If database is not reachable / buffering timed out, check default demo credentials
+    const { defaultUsers } = require('../utils/seedData');
+    const emailInput = req.body.email ? req.body.email.toLowerCase() : '';
+    const found = defaultUsers.find((u) => u.email.toLowerCase() === emailInput);
+    if (found && req.body.password === found.password) {
+      const fallbackToken = generateToken({ _id: `user_${found.role}`, email: found.email, role: found.role });
+      return successResponse(res, 200, 'Login successful', {
+        user: {
+          id: `user_${found.role}`,
+          name: found.name,
+          email: found.email,
+          role: found.role,
+          phone: found.phone,
+          address: found.address
+        },
+        token: fallbackToken
+      });
+    }
     next(error);
   }
 };
