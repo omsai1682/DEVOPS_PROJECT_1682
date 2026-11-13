@@ -194,7 +194,239 @@ const defaultProducts = [
   }
 ];
 
+const defaultRentals = [
+  {
+    _id: '6af5ff69a1fe32d4d266e881',
+    id: '6af5ff69a1fe32d4d266e881',
+    user: {
+      _id: '6af5ff69a1fe32d4d266e973',
+      name: 'Alex Johnson',
+      email: 'customer@example.com',
+      phone: '+1-555-0102'
+    },
+    product: {
+      _id: '6af5ff69a1fe32d4d266e971',
+      id: '6af5ff69a1fe32d4d266e971',
+      name: 'HP Spectre x360 2-in-1',
+      category: 'Laptops',
+      brand: 'HP',
+      model: 'Spectre 14-inch OLED Touch, Intel Core Ultra 7, 16GB RAM',
+      pricePerDay: 40,
+      securityDeposit: 250,
+      image: 'https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=800'
+    },
+    startDate: new Date(),
+    endDate: new Date(Date.now() + 3 * 86400000),
+    dueDate: new Date(Date.now() + 3 * 86400000),
+    totalDays: 3,
+    pricePerDay: 40,
+    rentalCharge: 120,
+    securityDeposit: 250,
+    lateDays: 0,
+    lateFee: 0,
+    totalAmount: 370,
+    bookingStatus: 'Confirmed',
+    paymentStatus: 'Paid',
+    returnStatus: 'Not Returned',
+    productConditionBefore: 'New',
+    productConditionAfter: 'Pending',
+    notes: 'Online rental order confirmed',
+    createdAt: new Date().toISOString()
+  },
+  {
+    _id: '6af5ff69a1fe32d4d266e882',
+    id: '6af5ff69a1fe32d4d266e882',
+    user: {
+      _id: '6af5ff69a1fe32d4d266e973',
+      name: 'Alex Johnson',
+      email: 'customer@example.com',
+      phone: '+1-555-0102'
+    },
+    product: {
+      _id: '6af5ff69a1fe32d4d266e972',
+      id: '6af5ff69a1fe32d4d266e972',
+      name: 'Sony Alpha A7 IV Full-Frame Camera',
+      category: 'Cameras',
+      brand: 'Sony',
+      model: 'ILCE-7M4 with FE 28-70mm Zoom Lens',
+      pricePerDay: 60,
+      securityDeposit: 400,
+      image: 'https://images.unsplash.com/photo-1502920917128-1aa500764cbd?w=800'
+    },
+    startDate: new Date(Date.now() - 2 * 86400000),
+    endDate: new Date(Date.now() + 4 * 86400000),
+    dueDate: new Date(Date.now() + 4 * 86400000),
+    totalDays: 6,
+    pricePerDay: 60,
+    rentalCharge: 360,
+    securityDeposit: 400,
+    lateDays: 0,
+    lateFee: 0,
+    totalAmount: 760,
+    bookingStatus: 'Dispatched',
+    paymentStatus: 'Paid',
+    returnStatus: 'Not Returned',
+    productConditionBefore: 'Excellent',
+    productConditionAfter: 'Pending',
+    notes: 'Dispatched via priority courier',
+    createdAt: new Date(Date.now() - 2 * 86400000).toISOString()
+  },
+  {
+    _id: '6af5ff69a1fe32d4d266e883',
+    id: '6af5ff69a1fe32d4d266e883',
+    user: {
+      _id: '6af5ff69a1fe32d4d266e974',
+      name: 'Sarah Connor',
+      email: 'sarah@example.com',
+      phone: '+1-555-0103'
+    },
+    product: {
+      _id: '6af5ff69a1fe32d4d266e970',
+      id: '6af5ff69a1fe32d4d266e970',
+      name: 'Dell XPS 15 9530',
+      category: 'Laptops',
+      brand: 'Dell',
+      model: 'XPS 15 Core i7 13th Gen, 32GB RAM, 1TB SSD, RTX 4060',
+      pricePerDay: 45,
+      securityDeposit: 300,
+      image: 'https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=800'
+    },
+    startDate: new Date(Date.now() - 3 * 86400000),
+    endDate: new Date(Date.now() + 2 * 86400000),
+    dueDate: new Date(Date.now() + 2 * 86400000),
+    totalDays: 5,
+    pricePerDay: 45,
+    rentalCharge: 225,
+    securityDeposit: 300,
+    lateDays: 0,
+    lateFee: 0,
+    totalAmount: 525,
+    bookingStatus: 'Active',
+    paymentStatus: 'Paid',
+    returnStatus: 'Not Returned',
+    productConditionBefore: 'Excellent',
+    productConditionAfter: 'Pending',
+    notes: 'In active customer possession',
+    createdAt: new Date(Date.now() - 3 * 86400000).toISOString()
+  },
+  {
+    _id: '6af5ff69a1fe32d4d266e884',
+    id: '6af5ff69a1fe32d4d266e884',
+    user: {
+      _id: '6af5ff69a1fe32d4d266e973',
+      name: 'Alex Johnson',
+      email: 'customer@example.com',
+      phone: '+1-555-0102'
+    },
+    product: {
+      _id: '6af5ff69a1fe32d4d266e977',
+      id: '6af5ff69a1fe32d4d266e977',
+      name: 'Sony PlayStation 5 Disc Edition Console',
+      category: 'Gaming Consoles',
+      brand: 'Sony',
+      model: 'PS5 Disc Console + 2 DualSense Wireless Controllers',
+      pricePerDay: 30,
+      securityDeposit: 250,
+      image: 'https://images.unsplash.com/photo-1606813907291-d86efa9b94db?w=800'
+    },
+    startDate: new Date(Date.now() - 5 * 86400000),
+    endDate: new Date(Date.now() - 1 * 86400000),
+    dueDate: new Date(Date.now() - 1 * 86400000),
+    totalDays: 4,
+    pricePerDay: 30,
+    rentalCharge: 120,
+    securityDeposit: 250,
+    lateDays: 0,
+    lateFee: 0,
+    totalAmount: 370,
+    bookingStatus: 'Return Requested',
+    paymentStatus: 'Paid',
+    returnStatus: 'Pending Inspection',
+    productConditionBefore: 'Excellent',
+    productConditionAfter: 'Pending',
+    notes: 'Customer dropped off at warehouse hub',
+    createdAt: new Date(Date.now() - 5 * 86400000).toISOString()
+  },
+  {
+    _id: '6af5ff69a1fe32d4d266e885',
+    id: '6af5ff69a1fe32d4d266e885',
+    user: {
+      _id: '6af5ff69a1fe32d4d266e973',
+      name: 'Alex Johnson',
+      email: 'customer@example.com',
+      phone: '+1-555-0102'
+    },
+    product: {
+      _id: '6af5ff69a1fe32d4d266e972',
+      id: '6af5ff69a1fe32d4d266e972',
+      name: 'Canon EOS R6 Mark II Mirrorless',
+      category: 'Cameras',
+      brand: 'Canon',
+      model: 'EOS R6 Mk II Body + RF 24-105mm F4 L IS USM Lens',
+      pricePerDay: 65,
+      securityDeposit: 400,
+      image: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=800'
+    },
+    startDate: new Date(Date.now() - 8 * 86400000),
+    endDate: new Date(Date.now() - 3 * 86400000),
+    dueDate: new Date(Date.now() - 3 * 86400000),
+    totalDays: 5,
+    pricePerDay: 65,
+    rentalCharge: 325,
+    securityDeposit: 400,
+    lateDays: 3,
+    lateFee: 292.5,
+    totalAmount: 1017.5,
+    bookingStatus: 'Overdue',
+    paymentStatus: 'Paid',
+    returnStatus: 'Not Returned',
+    productConditionBefore: 'Excellent',
+    productConditionAfter: 'Pending',
+    notes: 'Past due date - Automated late fee applied',
+    createdAt: new Date(Date.now() - 8 * 86400000).toISOString()
+  },
+  {
+    _id: '6af5ff69a1fe32d4d266e886',
+    id: '6af5ff69a1fe32d4d266e886',
+    user: {
+      _id: '6af5ff69a1fe32d4d266e974',
+      name: 'Sarah Connor',
+      email: 'sarah@example.com',
+      phone: '+1-555-0103'
+    },
+    product: {
+      _id: '6af5ff69a1fe32d4d266e978',
+      id: '6af5ff69a1fe32d4d266e978',
+      name: 'Apple iPad Pro 12.9" M2 Chip',
+      category: 'Tablets',
+      brand: 'Apple',
+      model: 'iPad Pro 12.9 6th Gen 256GB Wi-Fi + Apple Pencil 2',
+      pricePerDay: 35,
+      securityDeposit: 300,
+      image: 'https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=800'
+    },
+    startDate: new Date(Date.now() - 12 * 86400000),
+    endDate: new Date(Date.now() - 7 * 86400000),
+    dueDate: new Date(Date.now() - 7 * 86400000),
+    totalDays: 5,
+    pricePerDay: 35,
+    rentalCharge: 175,
+    securityDeposit: 300,
+    lateDays: 0,
+    lateFee: 0,
+    totalAmount: 475,
+    bookingStatus: 'Returned',
+    paymentStatus: 'Paid',
+    returnStatus: 'Accepted',
+    productConditionBefore: 'Excellent',
+    productConditionAfter: 'Excellent',
+    inspectionNotes: 'Clean return, no scratches, deposit released',
+    createdAt: new Date(Date.now() - 12 * 86400000).toISOString()
+  }
+];
+
 module.exports = {
   defaultUsers,
-  defaultProducts
+  defaultProducts,
+  defaultRentals
 };

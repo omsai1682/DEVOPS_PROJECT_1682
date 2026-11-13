@@ -1,6 +1,7 @@
 export const fallbackProducts = [
   {
-    _id: 'prod-001',
+    _id: '6af5ff69a1fe32d4d266e970',
+    id: '6af5ff69a1fe32d4d266e970',
     name: 'Dell XPS 15 9530',
     category: 'Laptops',
     brand: 'Dell',
@@ -11,11 +12,13 @@ export const fallbackProducts = [
     securityDeposit: 300,
     stock: 5,
     availableStock: 4,
+    rentedStock: 1,
     image: 'https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=800',
     status: 'Available'
   },
   {
-    _id: 'prod-002',
+    _id: '6af5ff69a1fe32d4d266e971',
+    id: '6af5ff69a1fe32d4d266e971',
     name: 'HP Spectre x360 2-in-1',
     category: 'Laptops',
     brand: 'HP',
@@ -26,11 +29,13 @@ export const fallbackProducts = [
     securityDeposit: 250,
     stock: 4,
     availableStock: 3,
+    rentedStock: 1,
     image: 'https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=800',
     status: 'Available'
   },
   {
-    _id: 'prod-003',
+    _id: '6af5ff69a1fe32d4d266e972',
+    id: '6af5ff69a1fe32d4d266e972',
     name: 'Canon EOS R6 Mark II Mirrorless',
     category: 'Cameras',
     brand: 'Canon',
@@ -41,11 +46,13 @@ export const fallbackProducts = [
     securityDeposit: 400,
     stock: 3,
     availableStock: 2,
+    rentedStock: 1,
     image: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=800',
     status: 'Available'
   },
   {
-    _id: 'prod-004',
+    _id: '6af5ff69a1fe32d4d266e973',
+    id: '6af5ff69a1fe32d4d266e973',
     name: 'Sony Alpha A7 IV Full-Frame Camera',
     category: 'Cameras',
     brand: 'Sony',
@@ -56,11 +63,13 @@ export const fallbackProducts = [
     securityDeposit: 400,
     stock: 4,
     availableStock: 3,
+    rentedStock: 1,
     image: 'https://images.unsplash.com/photo-1502920917128-1aa500764cbd?w=800',
     status: 'Available'
   },
   {
-    _id: 'prod-005',
+    _id: '6af5ff69a1fe32d4d266e974',
+    id: '6af5ff69a1fe32d4d266e974',
     name: 'Epson Pro EX9240 Full HD Projector',
     category: 'Projectors',
     brand: 'Epson',
@@ -71,11 +80,13 @@ export const fallbackProducts = [
     securityDeposit: 200,
     stock: 4,
     availableStock: 3,
+    rentedStock: 1,
     image: 'https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?w=800',
     status: 'Available'
   },
   {
-    _id: 'prod-006',
+    _id: '6af5ff69a1fe32d4d266e975',
+    id: '6af5ff69a1fe32d4d266e975',
     name: 'Sony SRS-RA5000 Premium Wireless Speaker',
     category: 'Speakers',
     brand: 'Sony',
@@ -86,11 +97,13 @@ export const fallbackProducts = [
     securityDeposit: 150,
     stock: 6,
     availableStock: 5,
+    rentedStock: 1,
     image: 'https://images.unsplash.com/photo-1545454675-3531b543be5d?w=800',
     status: 'Available'
   },
   {
-    _id: 'prod-007',
+    _id: '6af5ff69a1fe32d4d266e976',
+    id: '6af5ff69a1fe32d4d266e976',
     name: 'Samsung 65" QLED 4K Smart TV',
     category: 'TVs',
     brand: 'Samsung',
@@ -101,11 +114,13 @@ export const fallbackProducts = [
     securityDeposit: 500,
     stock: 2,
     availableStock: 1,
+    rentedStock: 1,
     image: 'https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?w=800',
     status: 'Available'
   },
   {
-    _id: 'prod-008',
+    _id: '6af5ff69a1fe32d4d266e977',
+    id: '6af5ff69a1fe32d4d266e977',
     name: 'Sony PlayStation 5 Disc Edition Console',
     category: 'Gaming Consoles',
     brand: 'Sony',
@@ -116,11 +131,13 @@ export const fallbackProducts = [
     securityDeposit: 250,
     stock: 5,
     availableStock: 3,
+    rentedStock: 2,
     image: 'https://images.unsplash.com/photo-1606813907291-d86efa9b94db?w=800',
     status: 'Available'
   },
   {
-    _id: 'prod-009',
+    _id: '6af5ff69a1fe32d4d266e978',
+    id: '6af5ff69a1fe32d4d266e978',
     name: 'Apple iPad Pro 12.9" M2 Chip',
     category: 'Tablets',
     brand: 'Apple',
@@ -131,11 +148,13 @@ export const fallbackProducts = [
     securityDeposit: 300,
     stock: 4,
     availableStock: 3,
+    rentedStock: 1,
     image: 'https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=800',
     status: 'Available'
   },
   {
-    _id: 'prod-010',
+    _id: '6af5ff69a1fe32d4d266e979',
+    id: '6af5ff69a1fe32d4d266e979',
     name: 'Apple AirPods Max Wireless Headphones',
     category: 'Headphones',
     brand: 'Apple',
@@ -146,11 +165,13 @@ export const fallbackProducts = [
     securityDeposit: 150,
     stock: 8,
     availableStock: 6,
+    rentedStock: 2,
     image: 'https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=800',
     status: 'Available'
   },
   {
-    _id: 'prod-011',
+    _id: '6af5ff69a1fe32d4d266e97a',
+    id: '6af5ff69a1fe32d4d266e97a',
     name: 'Apple Watch Ultra 2 GPS + Cellular',
     category: 'Smart Watches',
     brand: 'Apple',
@@ -161,8 +182,346 @@ export const fallbackProducts = [
     securityDeposit: 180,
     stock: 4,
     availableStock: 3,
+    rentedStock: 1,
     image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800',
     status: 'Available'
   }
 ];
 
+export const fallbackRentals = [
+  {
+    _id: '6af5ff69a1fe32d4d266e881',
+    id: '6af5ff69a1fe32d4d266e881',
+    user: {
+      _id: '6af5ff69a1fe32d4d266e973',
+      id: '6af5ff69a1fe32d4d266e973',
+      name: 'Alex Johnson',
+      email: 'customer@example.com',
+      phone: '+1-555-0102'
+    },
+    product: {
+      _id: '6af5ff69a1fe32d4d266e971',
+      id: '6af5ff69a1fe32d4d266e971',
+      name: 'HP Spectre x360 2-in-1',
+      category: 'Laptops',
+      brand: 'HP',
+      model: 'Spectre 14-inch OLED Touch, Intel Core Ultra 7, 16GB RAM',
+      pricePerDay: 40,
+      securityDeposit: 250,
+      image: 'https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=800'
+    },
+    startDate: new Date().toISOString(),
+    endDate: new Date(Date.now() + 3 * 86400000).toISOString(),
+    dueDate: new Date(Date.now() + 3 * 86400000).toISOString(),
+    totalDays: 3,
+    pricePerDay: 40,
+    rentalCharge: 120,
+    securityDeposit: 250,
+    lateDays: 0,
+    lateFee: 0,
+    totalAmount: 370,
+    bookingStatus: 'Confirmed',
+    paymentStatus: 'Paid',
+    returnStatus: 'Not Returned',
+    productConditionBefore: 'New',
+    productConditionAfter: 'Pending',
+    notes: 'Online rental order confirmed',
+    createdAt: new Date().toISOString()
+  },
+  {
+    _id: '6af5ff69a1fe32d4d266e882',
+    id: '6af5ff69a1fe32d4d266e882',
+    user: {
+      _id: '6af5ff69a1fe32d4d266e973',
+      id: '6af5ff69a1fe32d4d266e973',
+      name: 'Alex Johnson',
+      email: 'customer@example.com',
+      phone: '+1-555-0102'
+    },
+    product: {
+      _id: '6af5ff69a1fe32d4d266e973',
+      id: '6af5ff69a1fe32d4d266e973',
+      name: 'Sony Alpha A7 IV Full-Frame Camera',
+      category: 'Cameras',
+      brand: 'Sony',
+      model: 'ILCE-7M4 with FE 28-70mm Zoom Lens',
+      pricePerDay: 60,
+      securityDeposit: 400,
+      image: 'https://images.unsplash.com/photo-1502920917128-1aa500764cbd?w=800'
+    },
+    startDate: new Date(Date.now() - 2 * 86400000).toISOString(),
+    endDate: new Date(Date.now() + 4 * 86400000).toISOString(),
+    dueDate: new Date(Date.now() + 4 * 86400000).toISOString(),
+    totalDays: 6,
+    pricePerDay: 60,
+    rentalCharge: 360,
+    securityDeposit: 400,
+    lateDays: 0,
+    lateFee: 0,
+    totalAmount: 760,
+    bookingStatus: 'Dispatched',
+    paymentStatus: 'Paid',
+    returnStatus: 'Not Returned',
+    productConditionBefore: 'Excellent',
+    productConditionAfter: 'Pending',
+    notes: 'Dispatched via priority courier',
+    createdAt: new Date(Date.now() - 2 * 86400000).toISOString()
+  },
+  {
+    _id: '6af5ff69a1fe32d4d266e883',
+    id: '6af5ff69a1fe32d4d266e883',
+    user: {
+      _id: '6af5ff69a1fe32d4d266e974',
+      id: '6af5ff69a1fe32d4d266e974',
+      name: 'Sarah Connor',
+      email: 'sarah@example.com',
+      phone: '+1-555-0103'
+    },
+    product: {
+      _id: '6af5ff69a1fe32d4d266e970',
+      id: '6af5ff69a1fe32d4d266e970',
+      name: 'Dell XPS 15 9530',
+      category: 'Laptops',
+      brand: 'Dell',
+      model: 'XPS 15 Core i7 13th Gen, 32GB RAM, 1TB SSD, RTX 4060',
+      pricePerDay: 45,
+      securityDeposit: 300,
+      image: 'https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=800'
+    },
+    startDate: new Date(Date.now() - 3 * 86400000).toISOString(),
+    endDate: new Date(Date.now() + 2 * 86400000).toISOString(),
+    dueDate: new Date(Date.now() + 2 * 86400000).toISOString(),
+    totalDays: 5,
+    pricePerDay: 45,
+    rentalCharge: 225,
+    securityDeposit: 300,
+    lateDays: 0,
+    lateFee: 0,
+    totalAmount: 525,
+    bookingStatus: 'Active',
+    paymentStatus: 'Paid',
+    returnStatus: 'Not Returned',
+    productConditionBefore: 'Excellent',
+    productConditionAfter: 'Pending',
+    notes: 'In active customer possession',
+    createdAt: new Date(Date.now() - 3 * 86400000).toISOString()
+  },
+  {
+    _id: '6af5ff69a1fe32d4d266e884',
+    id: '6af5ff69a1fe32d4d266e884',
+    user: {
+      _id: '6af5ff69a1fe32d4d266e973',
+      id: '6af5ff69a1fe32d4d266e973',
+      name: 'Alex Johnson',
+      email: 'customer@example.com',
+      phone: '+1-555-0102'
+    },
+    product: {
+      _id: '6af5ff69a1fe32d4d266e977',
+      id: '6af5ff69a1fe32d4d266e977',
+      name: 'Sony PlayStation 5 Disc Edition Console',
+      category: 'Gaming Consoles',
+      brand: 'Sony',
+      model: 'PS5 Disc Console + 2 DualSense Wireless Controllers',
+      pricePerDay: 30,
+      securityDeposit: 250,
+      image: 'https://images.unsplash.com/photo-1606813907291-d86efa9b94db?w=800'
+    },
+    startDate: new Date(Date.now() - 5 * 86400000).toISOString(),
+    endDate: new Date(Date.now() - 1 * 86400000).toISOString(),
+    dueDate: new Date(Date.now() - 1 * 86400000).toISOString(),
+    totalDays: 4,
+    pricePerDay: 30,
+    rentalCharge: 120,
+    securityDeposit: 250,
+    lateDays: 0,
+    lateFee: 0,
+    totalAmount: 370,
+    bookingStatus: 'Return Requested',
+    paymentStatus: 'Paid',
+    returnStatus: 'Pending Inspection',
+    productConditionBefore: 'Excellent',
+    productConditionAfter: 'Pending',
+    notes: 'Customer dropped off at warehouse hub',
+    createdAt: new Date(Date.now() - 5 * 86400000).toISOString()
+  },
+  {
+    _id: '6af5ff69a1fe32d4d266e885',
+    id: '6af5ff69a1fe32d4d266e885',
+    user: {
+      _id: '6af5ff69a1fe32d4d266e973',
+      id: '6af5ff69a1fe32d4d266e973',
+      name: 'Alex Johnson',
+      email: 'customer@example.com',
+      phone: '+1-555-0102'
+    },
+    product: {
+      _id: '6af5ff69a1fe32d4d266e972',
+      id: '6af5ff69a1fe32d4d266e972',
+      name: 'Canon EOS R6 Mark II Mirrorless',
+      category: 'Cameras',
+      brand: 'Canon',
+      model: 'EOS R6 Mk II Body + RF 24-105mm F4 L IS USM Lens',
+      pricePerDay: 65,
+      securityDeposit: 400,
+      image: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=800'
+    },
+    startDate: new Date(Date.now() - 8 * 86400000).toISOString(),
+    endDate: new Date(Date.now() - 3 * 86400000).toISOString(),
+    dueDate: new Date(Date.now() - 3 * 86400000).toISOString(),
+    totalDays: 5,
+    pricePerDay: 65,
+    rentalCharge: 325,
+    securityDeposit: 400,
+    lateDays: 3,
+    lateFee: 292.5,
+    totalAmount: 1017.5,
+    bookingStatus: 'Overdue',
+    paymentStatus: 'Paid',
+    returnStatus: 'Not Returned',
+    productConditionBefore: 'Excellent',
+    productConditionAfter: 'Pending',
+    notes: 'Past due date - Automated late fee applied',
+    createdAt: new Date(Date.now() - 8 * 86400000).toISOString()
+  },
+  {
+    _id: '6af5ff69a1fe32d4d266e886',
+    id: '6af5ff69a1fe32d4d266e886',
+    user: {
+      _id: '6af5ff69a1fe32d4d266e974',
+      id: '6af5ff69a1fe32d4d266e974',
+      name: 'Sarah Connor',
+      email: 'sarah@example.com',
+      phone: '+1-555-0103'
+    },
+    product: {
+      _id: '6af5ff69a1fe32d4d266e978',
+      id: '6af5ff69a1fe32d4d266e978',
+      name: 'Apple iPad Pro 12.9" M2 Chip',
+      category: 'Tablets',
+      brand: 'Apple',
+      model: 'iPad Pro 12.9 6th Gen 256GB Wi-Fi + Apple Pencil 2',
+      pricePerDay: 35,
+      securityDeposit: 300,
+      image: 'https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=800'
+    },
+    startDate: new Date(Date.now() - 12 * 86400000).toISOString(),
+    endDate: new Date(Date.now() - 7 * 86400000).toISOString(),
+    dueDate: new Date(Date.now() - 7 * 86400000).toISOString(),
+    totalDays: 5,
+    pricePerDay: 35,
+    rentalCharge: 175,
+    securityDeposit: 300,
+    lateDays: 0,
+    lateFee: 0,
+    totalAmount: 475,
+    bookingStatus: 'Returned',
+    paymentStatus: 'Paid',
+    returnStatus: 'Accepted',
+    productConditionBefore: 'Excellent',
+    productConditionAfter: 'Excellent',
+    inspectionNotes: 'Clean return, no scratches, deposit released',
+    createdAt: new Date(Date.now() - 12 * 86400000).toISOString()
+  }
+];
+
+export const fallbackReports = {
+  rentals: fallbackRentals.map((r) => ({
+    rentalId: r._id,
+    customer: { id: r.user._id, name: r.user.name, email: r.user.email, phone: r.user.phone },
+    product: { id: r.product._id, name: r.product.name, category: r.product.category, brand: r.product.brand },
+    startDate: r.startDate,
+    endDate: r.endDate,
+    totalDays: r.totalDays,
+    rentalCharge: r.rentalCharge,
+    securityDeposit: r.securityDeposit,
+    lateFee: r.lateFee,
+    totalAmount: r.totalAmount,
+    status: r.bookingStatus,
+    paymentStatus: r.paymentStatus,
+    createdAt: r.createdAt
+  })),
+
+  availability: fallbackProducts.map((p) => {
+    const rentedStock = Math.max(0, p.stock - p.availableStock);
+    return {
+      productId: p._id,
+      product: p.name,
+      category: p.category,
+      brand: p.brand,
+      condition: p.condition,
+      status: p.status,
+      stock: p.stock,
+      availableStock: p.availableStock,
+      rentedStock,
+      pricePerDay: p.pricePerDay,
+      securityDeposit: p.securityDeposit,
+      utilizationRate: p.stock > 0 ? Math.round((rentedStock / p.stock) * 100) : 0
+    };
+  }),
+
+  revenue: {
+    totalRentals: 6,
+    rentalRevenue: 1325,
+    deposits: 1900,
+    lateFees: 292.5,
+    totalRevenue: 3517.5,
+    categoryBreakdown: {
+      Laptops: 345,
+      Cameras: 685,
+      'Gaming Consoles': 120,
+      Tablets: 175
+    },
+    timelineBreakdown: [
+      { date: new Date(Date.now() - 12 * 86400000).toISOString().split('T')[0], revenue: 175 },
+      { date: new Date(Date.now() - 8 * 86400000).toISOString().split('T')[0], revenue: 325 },
+      { date: new Date(Date.now() - 5 * 86400000).toISOString().split('T')[0], revenue: 120 },
+      { date: new Date(Date.now() - 3 * 86400000).toISOString().split('T')[0], revenue: 225 },
+      { date: new Date(Date.now() - 2 * 86400000).toISOString().split('T')[0], revenue: 360 },
+      { date: new Date().toISOString().split('T')[0], revenue: 120 }
+    ]
+  },
+
+  overdue: [
+    {
+      rentalId: '6af5ff69a1fe32d4d266e885',
+      customer: {
+        id: '6af5ff69a1fe32d4d266e973',
+        name: 'Alex Johnson',
+        email: 'customer@example.com',
+        phone: '+1-555-0102'
+      },
+      product: {
+        id: '6af5ff69a1fe32d4d266e972',
+        name: 'Canon EOS R6 Mark II Mirrorless',
+        category: 'Cameras',
+        brand: 'Canon'
+      },
+      startDate: new Date(Date.now() - 8 * 86400000).toISOString(),
+      dueDate: new Date(Date.now() - 3 * 86400000).toISOString(),
+      currentDate: new Date().toISOString(),
+      lateDays: 3,
+      lateFee: 292.5,
+      pricePerDay: 65,
+      rentalCharge: 325,
+      totalAmount: 1017.5,
+      status: 'Overdue'
+    }
+  ],
+
+  dashboardSummary: {
+    totalUsers: 4,
+    totalProducts: 11,
+    availableProducts: 8,
+    maintenanceProducts: 1,
+    damagedProducts: 0,
+    activeRentals: 3,
+    overdueRentals: 1,
+    returnedRentals: 5,
+    pendingInspections: 1,
+    totalRevenue: 3517.5,
+    rentalRevenue: 2267.5,
+    depositRevenue: 950,
+    lateFeeRevenue: 300
+  }
+};

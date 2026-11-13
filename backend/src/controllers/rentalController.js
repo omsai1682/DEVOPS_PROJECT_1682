@@ -4,87 +4,10 @@ const Product = require('../models/Product');
 const { successResponse } = require('../utils/apiResponse');
 const rentalService = require('../services/rentalService');
 const logger = require('../utils/logger');
-const { defaultProducts } = require('../utils/seedData');
+const { defaultProducts, defaultRentals } = require('../utils/seedData');
 
 // Shared in-memory rentals storage to guarantee rental persistence across sessions
-const inMemoryRentals = [
-  {
-    _id: '6af5ff69a1fe32d4d266e881',
-    id: '6af5ff69a1fe32d4d266e881',
-    user: {
-      _id: '6af5ff69a1fe32d4d266e973',
-      name: 'Alex Johnson',
-      email: 'customer@example.com',
-      phone: '+1-555-0102'
-    },
-    product: {
-      _id: '6af5ff69a1fe32d4d266e971',
-      id: '6af5ff69a1fe32d4d266e971',
-      name: 'HP Spectre x360 2-in-1',
-      category: 'Laptops',
-      brand: 'HP',
-      model: 'Spectre 14-inch OLED Touch, Intel Core Ultra 7, 16GB RAM',
-      pricePerDay: 40,
-      securityDeposit: 250,
-      image: 'https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=800'
-    },
-    startDate: new Date(),
-    endDate: new Date(Date.now() + 3 * 86400000),
-    dueDate: new Date(Date.now() + 3 * 86400000),
-    totalDays: 3,
-    pricePerDay: 40,
-    rentalCharge: 120,
-    securityDeposit: 250,
-    lateDays: 0,
-    lateFee: 0,
-    totalAmount: 370,
-    bookingStatus: 'Confirmed',
-    paymentStatus: 'Paid',
-    returnStatus: 'Not Returned',
-    productConditionBefore: 'New',
-    productConditionAfter: 'Pending',
-    notes: 'Online rental order confirmed',
-    createdAt: new Date().toISOString()
-  },
-  {
-    _id: '6af5ff69a1fe32d4d266e882',
-    id: '6af5ff69a1fe32d4d266e882',
-    user: {
-      _id: '6af5ff69a1fe32d4d266e973',
-      name: 'Alex Johnson',
-      email: 'customer@example.com',
-      phone: '+1-555-0102'
-    },
-    product: {
-      _id: '6af5ff69a1fe32d4d266e972',
-      id: '6af5ff69a1fe32d4d266e972',
-      name: 'Sony Alpha A7 IV Full-Frame Camera',
-      category: 'Cameras',
-      brand: 'Sony',
-      model: 'ILCE-7M4 with FE 28-70mm Zoom Lens',
-      pricePerDay: 60,
-      securityDeposit: 400,
-      image: 'https://images.unsplash.com/photo-1502920917128-1aa500764cbd?w=800'
-    },
-    startDate: new Date(Date.now() - 2 * 86400000),
-    endDate: new Date(Date.now() + 4 * 86400000),
-    dueDate: new Date(Date.now() + 4 * 86400000),
-    totalDays: 6,
-    pricePerDay: 60,
-    rentalCharge: 360,
-    securityDeposit: 400,
-    lateDays: 0,
-    lateFee: 0,
-    totalAmount: 760,
-    bookingStatus: 'Dispatched',
-    paymentStatus: 'Paid',
-    returnStatus: 'Not Returned',
-    productConditionBefore: 'Excellent',
-    productConditionAfter: 'Pending',
-    notes: 'Dispatched via priority courier',
-    createdAt: new Date(Date.now() - 2 * 86400000).toISOString()
-  }
-];
+const inMemoryRentals = [...defaultRentals];
 
 /**
  * Calculate rental preview estimate
@@ -300,7 +223,13 @@ const getMyRentals = async (req, res, _next) => {
 
     // Always include the user's in-memory rentals so newly booked gear immediately appears
     if (!rentals || rentals.length === 0) {
-      rentals = inMemoryRentals;
+      const userRentals = inMemoryRentals.filter(
+        (r) =>
+          (r.user?._id && r.user._id.toString() === req.user?.id?.toString()) ||
+          (r.user?.id && r.user.id.toString() === req.user?.id?.toString()) ||
+          (r.user?.email && req.user?.email && r.user.email.toLowerCase() === req.user.email.toLowerCase())
+      );
+      rentals = userRentals.length > 0 ? userRentals : inMemoryRentals;
     }
 
     return successResponse(res, 200, 'My rentals retrieved', {
