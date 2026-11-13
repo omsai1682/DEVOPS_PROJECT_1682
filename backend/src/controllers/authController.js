@@ -105,12 +105,15 @@ const login = async (req, res, next) => {
     // If database is not reachable / buffering timed out, check default demo credentials
     const { defaultUsers } = require('../utils/seedData');
     const emailInput = req.body.email ? req.body.email.toLowerCase() : '';
-    const found = defaultUsers.find((u) => u.email.toLowerCase() === emailInput);
-    if (found && req.body.password === found.password) {
-      const fallbackToken = generateToken({ _id: `user_${found.role}`, email: found.email, role: found.role });
+    const foundIdx = defaultUsers.findIndex((u) => u.email.toLowerCase() === emailInput);
+    if (foundIdx !== -1 && req.body.password === defaultUsers[foundIdx].password) {
+      const found = defaultUsers[foundIdx];
+      const validId = `6af5ff69a1fe32d4d266e97${foundIdx + 1}`;
+      const fallbackToken = generateToken({ _id: validId, id: validId, email: found.email, role: found.role });
       return successResponse(res, 200, 'Login successful', {
         user: {
-          id: `user_${found.role}`,
+          _id: validId,
+          id: validId,
           name: found.name,
           email: found.email,
           role: found.role,
@@ -130,9 +133,17 @@ const login = async (req, res, next) => {
  */
 const getMe = async (req, res, next) => {
   try {
-    const user = await User.findById(req.user.id);
+    let user = null;
+    try {
+      if (req.user && req.user.id) {
+        user = await User.findById(req.user.id);
+      }
+    } catch (_e) {
+      user = null;
+    }
+
     if (!user) {
-      throw new ApiError(404, 'User not found');
+      user = req.user;
     }
 
     return successResponse(res, 200, 'Profile retrieved', { user });

@@ -3,6 +3,7 @@ const Product = require('../models/Product');
 const { ApiError } = require('../middleware/errorMiddleware');
 const { successResponse } = require('../utils/apiResponse');
 const rentalService = require('../services/rentalService');
+const logger = require('../utils/logger');
 
 /**
  * Calculate rental preview estimate
@@ -64,7 +65,7 @@ const createBooking = async (req, res, next) => {
  * Get all rentals (Admin and Inventory Manager)
  * GET /api/rentals
  */
-const getAllRentals = async (req, res, next) => {
+const getAllRentals = async (req, res, _next) => {
   try {
     const { status, search } = req.query;
     const query = {};
@@ -95,7 +96,11 @@ const getAllRentals = async (req, res, next) => {
       rentals
     });
   } catch (error) {
-    next(error);
+    logger.warn('Rental.find failed, returning empty list:', error.message);
+    return successResponse(res, 200, 'Rentals retrieved', {
+      count: 0,
+      rentals: []
+    });
   }
 };
 
@@ -103,7 +108,7 @@ const getAllRentals = async (req, res, next) => {
  * Get rentals of currently logged in customer
  * GET /api/rentals/my-rentals
  */
-const getMyRentals = async (req, res, next) => {
+const getMyRentals = async (req, res, _next) => {
   try {
     const rentals = await Rental.find({ user: req.user.id })
       .populate('product')
@@ -114,7 +119,11 @@ const getMyRentals = async (req, res, next) => {
       rentals
     });
   } catch (error) {
-    next(error);
+    logger.warn('Rental.find for user failed, returning empty list:', error.message);
+    return successResponse(res, 200, 'My rentals retrieved', {
+      count: 0,
+      rentals: []
+    });
   }
 };
 
